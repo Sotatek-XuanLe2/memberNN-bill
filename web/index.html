@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Hóa đơn điện nước</title>
+</head>
+<body>
+<h1>Hóa đơn điện nước</h1>
+<form method="POST" action="/cgi-bin/BILLWEB">
+  <label>Mã hóa đơn:
+    <input type="text" name="id" required maxlength="10"
+           pattern="[A-Za-z0-9]{1,10}" placeholder="BILL000001">
+  </label><br><br>
+  <label>Chức năng:
+    <select name="action">
+      <option value="V">Tra cứu</option>
+      <option value="P">Thanh toán</option>
+      <option value="C">Nhập hóa đơn mới</option>
+      <option value="H">Lịch sử thanh toán</option>
+    </select>
+  </label><br><br>
+  <label>Số tiền:
+    <input type="number" name="amount" min="0" step="0.01">
+  </label>
+  (thanh toán: nhập đúng số phải trả; nhập hóa đơn: tiền gốc)<br><br>
+  <fieldset>
+    <legend>Chỉ dùng khi nhập hóa đơn mới</legend>
+    <label>Tên khách hàng (không dấu):
+      <input type="text" name="name" maxlength="30" pattern="[A-Za-z0-9 ]*">
+    </label><br><br>
+    <label>Loại:
+      <select name="type">
+        <option value="E">Điện</option>
+        <option value="W">Nước</option>
+      </select>
+    </label><br><br>
+    <label>Hạn thanh toán:
+      <input type="text" name="due" maxlength="8" pattern="[0-9]{8}" placeholder="YYYYMMDD">
+    </label>
+  </fieldset><br>
+  <button type="submit">Gửi</button>
+</form>
+</body>
+</html>
